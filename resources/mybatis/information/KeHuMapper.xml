@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kehuMapper">
+	<!-- 
+		根据手机号获取用户信息
+	 -->
+	<select id="getDataOfMemberByPhone" parameterType="pd" resultType="pd">
+		SELECT
+			phone
+		FROM
+			tb_member
+		WHERE
+			identity=#{identity} and
+			phone=#{phone}
+	</select>
+	
+	<select id="getDataOfMemberByPhone2" parameterType="pd" resultType="pd">
+		SELECT
+			phone
+		FROM
+			tb_member
+		WHERE
+			phone=#{phone}
+	</select>
+	<!-- 
+		保存用户信息
+	 -->
+	 <insert id="insertMember" parameterType="pd">
+	 		insert into tb_member(
+	 			member_id,
+	 			phone,
+	 			link_phone,
+	 			identity,
+	 			password,
+	 			member_type,
+	 			status,
+	 			last_login_time,
+	 			ip,
+	 			bz,
+	 			registerTime
+	 		)values(
+	 			#{member_id},
+	 			#{phone},
+	 			#{link_phone},
+	 			#{identity},
+	 			#{password},
+	 			#{member_type},
+	 			#{status},
+	 			#{last_login_time},
+	 			#{ip},
+	 			#{bz},
+	 			#{registerTime}
+	 		)
+	 </insert>
+	 
+	 <select id="getMemberDetailByID" parameterType="pd" resultType="pd">
+	 		select * from tb_member where member_id =#{member_id}
+	 </select>
+	 
+	 <!-- 根据用户名和密码获取是否存在该用户，用于登录验证 -->
+	 <select id="getMemberByPhoneAndPassword" parameterType="pd" resultType="pd">
+	 	select * from tb_member where phone = #{phone} and password = #{password} and identity=#{identity}
+	 </select>
+	 
+	 <update id="updateLastLoginTime" parameterType="pd">
+	 	update  tb_member set last_login_time = #{last_login_time} where member_id =#{member_id}
+	 </update>
+	 
+	 <update id="updatepwd" parameterType="pd">
+	 	update tb_member set password = #{password} where phone = #{phone} and identity=#{identity}
+	 </update>
+	 <!-- 根据用户昵称获取是否存在该用户，用于昵称验证 -->
+	 <select id="getMemberByNoCheng" parameterType="pd" resultType="pd">
+	 	select nicheng from tb_member where nicheng = #{nicheng} and member_id!=#{member_id}
+	 </select>
+	 <!--  
+	 	获取会员列表
+	 -->
+	 <select id="getMemberList" parameterType="pd" resultType="pd">
+	 	SELECT
+			member_id,
+			headImg,
+			nicheng,
+			xingming,
+			birthday,
+			age,
+			shengao,
+			tizhong
+		FROM tb_member
+		<where>
+			identity='1' and xingming!='' and headImg!='' and status='1'
+			<if test="sex!='' and sex!=null">
+				and sex=#{sex} and age &gt;= 18 and age &lt;= 50
+			</if>
+			<if test="qn!='' and qn!=null">
+				and age &gt;= 18 and age &lt;= 50
+			</if>
+			<if test="xy!='' and xy!=null">
+				and age &gt; 50
+			</if>
+			<if test="age1!='' and age1!=null">
+				and age &gt;=#{age1} and age &lt;= #{age2}
+			</if>
+			<if test="juzhudi!='' and juzhudi!=null">
+				and juzhudi=#{juzhudi}
+			</if>
+			<if test="shengao1!='' and shengao1!=null">
+				and shengao &gt;=#{shengao1} and shengao &lt;= #{shengao2}
+			</if>
+			<if test="nianxin!='' and nianxin!=null">
+				and nianxin=#{nianxin}
+			</if>
+			<if test="xueli!='' and xueli!=null">
+				and xueli=#{xueli}
+			</if>
+		</where>
+		<if test="pageNum>=0 and pageNum!=null">
+			limit #{pageNum},#{pageSize}
+		</if>
+	 </select>
+	 <!-- 
+	 	根据ID获取会员详情
+	  -->
+	 <select id="memberDetail" parameterType="pd" resultType="pd">
+	 	SELECT
+			tbm.*,
+			GROUP_CONCAT(tzi.imgPath) imgPaths
+		FROM tb_member tbm
+		LEFT JOIN tb_zpq_img tzi ON tzi.member_id = tbm.member_id
+		WHERE
+			tbm.member_id = #{member_id}
+		GROUP BY tbm.member_id
+	 </select>
+	 <!-- 
+	 	更新指定会员的年龄
+	 -->
+	 <update id="updateMemberAgeById" parameterType="pd">
+	 	update tb_member
+	 	set
+	 		age=#{age}
+	 	where 
+	 		member_id=#{member_id}
+	 </update>
+	 <!--  
+	 	完善会员信息
+	 -->
+	 <update id="updateMemberInfo" parameterType="pd">
+	 	update tb_member 
+	 	set
+	 		<if test="headImg!=null and headImg!=''">
+	 			headImg=#{headImg},
+	 			erweima=#{erweima}
+	 		</if> 
+	 		<if test="xingming!=null and xingming!=''">
+	 			xingming=#{xingming},
+	 			sex=#{sex},
+	 			age=#{age},
+	 			birthday=#{birthday},
+	 			shengao=#{shengao},
+	 			tizhong=#{tizhong},
+	 			xueli=#{xueli},
+	 			isHun=#{isHun}
+	 		</if> 
+	 		<if test="ziwojieshao!=null and ziwojieshao!=''">
+	 			ziwojieshao=#{ziwojieshao}
+	 		</if> 
+	 		<if test="xingqu!=null and xingqu!=''">
+	 			xingqu=#{xingqu}
+	 		</if> 
+	 	where 
+	 		member_id=#{member_id}
+	 </update>
+	 <!-- 
+	 	完善其他信息
+	  -->
+	  <update id="updateMemberOtherInfo">
+	  	update tb_member 
+	 	set
+	 		minzu=#{minzu},
+ 			hukouszd=#{hukouszd},
+ 			juzhudi=#{juzhudi},
+ 			isOnly=#{isOnly},
+ 			zhiye=#{zhiye},
+ 			nianxin=#{nianxin},
+ 			biyeyx=#{biyeyx},
+ 			isFngCar=#{isFngCar},
+ 			isParent=#{isParent}
+	 	where 
+	 		member_id=#{member_id}
+	  </update>
+	 <!-- 
+	 	完善择偶标准
+	  -->
+	  <update id="updateMemberZobz">
+	  	update tb_member 
+	 	set
+	 		zo_age=#{zo_age},
+ 			zo_shengao=#{zo_shengao},
+ 			zo_xueli=#{zo_xueli},
+ 			zo_isHun=#{zo_isHun}
+	 	where 
+	 		member_id=#{member_id}
+	  </update>
+	 <!-- 
+	 	完善联系方式
+	  -->
+	  <update id="updateMemberLxfs">
+	  	update tb_member 
+	 	set
+	 		link_phone=#{link_phone},
+ 			weixin=#{weixin},
+ 			qq=#{qq},
+ 			email=#{email}
+	 	where 
+	 		member_id=#{member_id}
+	  </update>
+	  <!-- 
+	  	完善个人信息(月老红娘使用)
+	   -->
+	  <update id="updateInfo" parameterType="pd">
+	 	update tb_member set
+		 	nicheng = #{nicheng},
+		 	birthday = #{birthday},
+		 	age = #{age},
+		 	juzhudi = #{juzhudi},
+		 	headImg = #{headImg},
+		 	erweima = #{erweima}
+		 where member_id =#{member_id}
+	 </update>
+	 <!-- 
+	 	根据会员的主键ID号获取照片墙的信息
+	  -->
+	 <select id="getZpqImgPaths" parameterType="pd" resultType="pd">
+	 	SELECT
+			*
+		FROM tb_zpq_img
+		WHERE
+			member_id=#{member_id}
+	 </select>
+	 <!-- 保存照片墙 -->
+	 <insert id="insertZpq" parameterType="pd" >
+	 	insert into tb_zpq_img(
+	 		zpq_img_id,
+	 		imgPath,
+	 		member_id
+	 	)values(
+	 		#{zpq_img_id},
+	 		#{imgPath},
+	 		#{member_id}
+	 	)
+	 </insert>
+	 <!--  
+	 	根据ID删除指定的照片墙图片信息
+	 -->
+	 <delete id="deleteZpq" parameterType="pd">
+	 	DELETE 
+		FROM tb_zpq_img
+		WHERE zpq_img_id=#{zpq_img_id}
+	 </delete>
+	 
+	 <!--  
+		保存推荐记录信息
+	 -->
+	 <insert id="saveTuiJian" parameterType="pd">
+	 	INSERT INTO tb_tuijian(
+			tuijian_id,
+			tuijian_user_id,
+			beituijian_user_id,
+			state,
+			money
+		)VALUES(
+			#{tuijian_id},
+			#{tuijian_user_id},
+			#{beituijian_user_id},
+			#{state},
+			#{money}
+		)
+	 </insert>
+	 <!-- 
+	 	根据会员的主键ID获取推荐人数列表或获取佣金的列表
+	  -->
+	  <select id="getTuiJianList" parameterType="pd" resultType="pd">
+		  SELECT
+			tbm.headImg,
+			tbm.sex,
+			tbm.phone,
+			tbm.registerTime,
+			tbt.money
+		  FROM tb_tuijian tbt 
+		  LEFT JOIN tb_member tbm ON tbm.member_id=tbt.beituijian_user_id
+		  WHERE 
+		  	tuijian_user_id=#{tuijian_user_id}
+		  AND state=#{state}
+	  </select>
+	
+	<!-- 提现部分 -->
+	<!--  
+		创建提现申请记录
+	-->
+	<insert id="saveWithDrawCash" parameterType="pd">
+		INSERT INTO tb_withdraw_cash (
+			withdraw_cash_id,
+			amount,
+			shenqing_time,
+			balance_amount,
+			state,
+			tixian_method,
+			realName,
+			account,
+			member_id
+		)
+		VALUES(
+			#{withdraw_cash_id},
+			#{amount},
+			#{shenqing_time},
+			#{balance_amount},
+			#{state},
+			#{tixian_method},
+			#{realName},
+			#{account},
+			#{member_id}
+		)
+	</insert>
+	<!-- 
+		更新会员的余额
+	 -->
+	 <update id="updateUsable_money" parameterType="pd">
+	 	update tb_member
+	 	set
+	 		usable_money=#{usable_money}
+	 		<if test="total_money!='' and total_money!=null">
+	 		,total_money=#{total_money}
+	 		</if>
+	 	where
+	 		member_id=#{member_id}
+	 </update>
+	<!--  
+		根据用户的主键ID获取对应的提现申请记录
+	-->
+	<select id="getWithDrawCashList" parameterType="pd" resultType="pd">
+		SELECT
+			*
+		FROM
+			tb_withdraw_cash
+		WHERE
+			member_id = #{member_id}
+		ORDER BY shenqing_time desc
+	</select>
+	
+	
+	<!--  
+		保存临时信息
+	-->
+	<insert id="save_tb_temp_information" parameterType="pd">
+		INSERT INTO tb_temp(
+			temp_id,
+			order_number,
+			member_id
+		)VALUES(
+			#{temp_id},
+			#{order_number},
+			#{member_id}
+		)
+	</insert>
+	<!--  
+		根据订单的订单编号，获取临时信息
+	-->
+	<select id="get_tb_temp_information" parameterType="pd" resultType="pd">
+		SELECT
+			*
+		FROM
+			tb_temp 
+		WHERE
+			order_number = #{order_number}
+	</select>  
+	 <!--  
+		保存订单信息
+	-->
+	<insert id="saveOrder" parameterType="pd">
+		INSERT INTO tb_order(
+			order_id,
+			member_id,
+			order_number,
+			create_order_time,
+			money
+		)VALUES(
+			#{order_id},
+			#{member_id},
+			#{order_number},
+			#{create_order_time},
+			#{money}
+		)
+	</insert> 
+	<!-- 
+		改变会员状态会员类型（0-普通会员，1-缴费会员）
+	 -->
+	 <update id="updateMemberType" parameterType="pd">
+	 	update tb_member
+	 	set
+	 		member_type=#{member_type}
+	 	where
+	 		member_id=#{member_id}
+	 </update>
+	 
+	 <!-- 
+	 	根据被推荐的主键ID获取推荐记录表
+	  -->
+	  <select id="getTuiJianInfoBybtjuid" parameterType="pd" resultType="pd"> 
+	  		SELECT
+				*
+			FROM tb_tuijian 
+			WHERE
+				beituijian_user_id=#{beituijian_user_id}
+	  </select>
+	 <!-- 
+		改变推荐记录的状态
+	 -->
+	 <update id="updateTuiJianState" parameterType="pd">
+	 	update tb_tuijian
+	 	set
+	 		state=#{state}
+	 	where
+	 		tuijian_id=#{tuijian_id}
+	 </update>
+</mapper>

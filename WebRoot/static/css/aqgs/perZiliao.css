@@ -1,0 +1,80 @@
+.ziliaoBox{
+    width:100%;margin:16px 0;background-color: #fff;
+}
+.picWall{
+    padding: 8px 0;line-height:60px;width:92%;height:76px;margin:auto;background:url(../../images/aqgs/arrow_03.png) right no-repeat;position: relative;background-size: 12px;
+}
+.picWall>h3{
+    width:50%;padding-top:16px;font-size: 16px;font-weight: 400;
+}
+.picWall span{
+    color: #000;
+}
+.picWall>div{
+    width:50%;font-size: 12px;color: #a1a1a1;margin-top:8px;
+}
+.picWall>img{
+    width:60px;height:60px;border-radius: 50%;position: absolute;right:8%;top:6px;
+}
+.ziliaoBox div p{
+    width:100%;padding:0 4%;height:48px;line-height: 48px;border-top:1px solid #ebebeb;position: relative;
+    color: #000;
+}
+.ziliaoBox div p input{
+    position: absolute;top:15px;right:4%;text-align: right;height:24px;line-height: 24px;color:#969696;
+    width: 60%;
+}
+.ziliaoBox div p input.yesc{
+    padding-right:5%;background: url(../../images/aqgs/arrow_03.png) right no-repeat;background-size: 10px 20px;
+}
+.ziliaoBox div p a.bac{
+    padding-right:5%;background: url(../../images/aqgs/arrow_03.png) right no-repeat;background-size: 10px 20px;
+    position:absolute;top:15px;right:4%;text-align: right;height:24px;line-height: 24px;color:#969696;
+}
+.photo,.info{
+    width:100%;
+}
+.photo_t,.info_t{
+    position: relative;
+    height: 60px;
+    line-height: 40px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    background-color: #fff;
+}
+.photo_t span,.info_t span{
+    color: #E52A63;
+    font-size: 16px;
+}
+.photo_t i,.info_t i{
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(../../images/aqgs/down_arr.png) no-repeat;
+}
+.info_b_a:first-child{
+    border-top: none;
+}
+.info_b_a{
+    border-top: 1px solid #ddd;
+    height: 50px;
+    line-height: 30px;
+    padding: 10px;
+    background-color: #fff;
+}
+.info_b_a label{
+    width: 40%;
+    color: #B7B7B7;
+    font-size: 16px;
+}
+.info_b_a input{
+    width: 60%;
+    outline: none;
+    border: none;
+    margin-left: 5px;
+    font-size: 16px;
+}

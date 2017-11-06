@@ -1,0 +1,58 @@
+.searchBox{
+    width:100%;
+}
+.searchBox>a{
+    display: block;width:100%;height:49px;
+}
+.searchBox p{
+    width:92%;padding:0 4%;margin-top:10px;height:48px;line-height:48px;background-color:#fff;
+    border-bottom:1px solid #a6a6a6;font-size: 16px;position: relative;
+}
+.searchBox p>span{
+    display: block;height:48px;padding-right:20px;font-size: 16px;position: absolute;top:0;right:4%;
+    background:url(../../images/aqgs/arrow_03.png) right no-repeat;background-size:10px 15px;color:#000;
+}
+.searchBox p>a{
+    display: block;height:48px;padding-right:20px;font-size: 16px;position: absolute;top:0;right:4%;
+    background:url(../../images/aqgs/arrow_03.png) right no-repeat;background-size:10px 15px;color:#000;
+}
+.searchBtn{
+    display:block;width:92%;height:46px;line-height:46px;text-align:center;background-color: #e8275e;
+    border:1px solid #b32d52;border-radius: 25px;font-size: 19px;color:#fff;margin:17px auto auto;
+}
+.xueliBox,.sexBox,.ageBox,.heightBox,.zhiwuBox,.shouruBox{
+    width:100%;position: fixed;left:0;bottom:0;z-index: 999;display: none;
+}
+.ageBox,.heightBox,.zhiwuBox{
+    height:220px;
+}
+.xueliBox>p,.sexBox>p,.ageBox>p,.heightBox>p,.zhiwuBox>p,.shouruBox>p{
+    height:48px;line-height: 48px;padding:0 3%;background-color:#f4f4f4;text-align: center;font-size: 16px;
+}
+.xueliBox>p>a:nth-child(1),.sexBox>p>a:nth-child(1),.ageBox>p>a:nth-child(1),.heightBox>p>a:nth-child(1),.zhiwuBox>p>a:nth-child(1),.shouruBox>p>a:nth-child(1){
+    float:left;color:#ea537d;font-size: 19px;
+}
+.xueliBox>p>a:nth-child(2),.sexBox>p>a:nth-child(2),.ageBox>p>a:nth-child(2),.heightBox>p>a:nth-child(2),.zhiwuBox>p>a:nth-child(2),.shouruBox>p>a:nth-child(2){
+    float:right;color:#ea537d;font-size: 19px;
+}
+.selectXueli,.selectSex,.selectAge,.selectHeight,.selectZhiwu,.selectShouru{
+    width: 100%;background-color: #fff;
+}
+.ageBox>div,.heightBox>div{
+    width:100%;position:absolute;top:48px;left:0;z-index: 99999;background-color: #fff;
+}
+.selectAge,.selectHeight,.selectZhiwu{
+    height:252px;overflow:hidden;overflow-y: auto;background-color: #fff;
+}
+.selectXueli>li,.selectSex>li,.selectAge>li,.selectHeight>li,.selectZhiwu>li,.selectShouru>li{
+    width:100%;height:36px;line-height: 36px;border-top:1px solid #f4f4f4;text-align: center;
+}
+.selectXueli>li>a,.selectSex>li>a,.selectAge>li>a,.selectHeight>li>a,.selectZhiwu>li>a,.selectShouru>li>a{
+    color:#000;font-size:16px;
+}
+#start{
+    text-align: right;
+}
+.tuichu{
+    display: block; margin-bottom:100px;margin-top:20px;width:100%;height:50px;line-height: 50px;text-align: center;color:#fff;font-size: 16px;background-color: #e8275e;
+}

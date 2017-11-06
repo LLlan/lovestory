@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberCostMapper">
+	<!--  
+		获取列表
+	-->	
+	<select id="membercostlistPage" parameterType="page" resultType="pd">
+		SELECT 
+			*
+		FROM sys_member_cost 
+	</select>
+	<!--  
+		获取对象信息(肯定只有一条记录)
+	-->
+	<select id="getDataOfMemberCost" parameterType="pd" resultType="pd">
+		SELECT 
+			*
+		FROM sys_member_cost
+	</select>
+	<!--  
+		保存的信息
+	-->
+	<insert id="insertMemberCost" parameterType="pd">
+		INSERT INTO sys_member_cost (
+			member_cost_id,
+			cost
+		)
+		VALUES(
+			#{member_cost_id},
+			#{cost}
+		)
+	</insert>
+	<!--  
+		更新
+	-->
+	<update id="updateMemberCost" parameterType="pd">
+		update sys_member_cost
+		set
+			cost=#{cost}
+		where member_cost_id=#{member_cost_id}
+	</update>
+	<!--  
+		根据ID获取对象信息
+	-->
+	<select id="getMemberCostById" parameterType="pd" resultType="pd">
+		SELECT
+			*
+		FROM sys_member_cost
+		WHERE 
+			member_cost_id=#{member_cost_id}
+	</select>
+	<!--  
+		根据ID删除指定对象信息
+	-->
+	<delete id="deleteMemberCostById" parameterType="pd">
+		DELETE 
+		FROM sys_member_cost
+		WHERE member_cost_id in
+		<foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+</mapper>

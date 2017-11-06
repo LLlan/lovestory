@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yongJinMapper">
+	<!--  
+		获取佣金列表
+	-->	
+	<select id="yongjinlistPage" parameterType="page" resultType="pd">
+		SELECT 
+			*
+		FROM sys_yongjin 
+	</select>
+	<!--  
+		获取佣金对象信息(肯定只有一条记录)
+	-->
+	<select id="getDataOfYongJin" parameterType="pd" resultType="pd">
+		SELECT 
+			*
+		FROM sys_yongjin
+	</select>
+	<!--  
+		保存佣金的信息
+	-->
+	<insert id="insertYongJin" parameterType="pd">
+		INSERT INTO sys_yongjin (
+			yongjin_id,
+			yongjin
+		)
+		VALUES(
+			#{yongjin_id},
+			#{yongjin}
+		)
+	</insert>
+	<!--  
+		更新佣金
+	-->
+	<update id="updateYongJin" parameterType="pd">
+		update sys_yongjin
+		set
+			yongjin=#{yongjin}
+		where yongjin_id=#{yongjin_id}
+	</update>
+	<!--  
+		根据ID获取对象信息
+	-->
+	<select id="getYongJinById" parameterType="pd" resultType="pd">
+		SELECT
+			*
+		FROM sys_yongjin
+		WHERE 
+			yongjin_id=#{yongjin_id}
+	</select>
+	<!--  
+		根据ID删除指定对象信息
+	-->
+	<delete id="deleteYongJinById" parameterType="pd">
+		DELETE 
+		FROM sys_yongjin
+		WHERE yongjin_id in
+		<foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+</mapper>

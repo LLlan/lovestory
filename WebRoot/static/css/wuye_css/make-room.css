@@ -1,0 +1,9 @@
+.top{position: relative; margin: 0 auto;width: 90%;text-align: center;min-width: 320px;}
+.top li{float: left;width: 33.3%;text-align: center;padding: 10% 0;}
+.top li:nth-of-type(2){}
+.top li div{background: #06C1AE;color: #FFFFFF;border-radius: 5px;font-size: 14px;width: 80px;margin: 0  auto;padding: 8% 0;}
+.room_tb,.room_tb table{width: 100%;}
+.room_tb table tr td{border: 1px solid #FFFFFF;width: 50%;text-align: center;padding:8% 0 ;}
+.room_tb table tr td a{font-size: 14px;color: #06C1AE;}
+.room_tb table tr td:first-child{border-left: none;}
+.room_tb table tr td:last-child{border-right: none;}

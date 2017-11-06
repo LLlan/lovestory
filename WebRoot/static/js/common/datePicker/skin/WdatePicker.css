@@ -1,0 +1,59 @@
+.Wdate{
+	border:#999 1px solid;
+	height:20px;
+	background:#fff url(datePicker.png) no-repeat right;
+}
+input.WdateTime{
+    height:20px;cursor:hand;
+    width:165px;
+	border:1px solid  #cccccc;
+	background:#fbfbfb url(datePicker.png) no-repeat right;
+	font:9pt;
+	color:#000;
+	line-height:16px;
+}
+
+.WdateFmtErr{
+	font-weight:bold;
+	color:red;
+}
+
+input.date,input.yyyyMMddDate,input.dateFrom,input.dateTo,input.nolineDateFrom,input.nolineDateTo,input.annualDateFrom,input.annualDateTo,input.dateMinuteFrom,input.dateMinuteTo,input.futureDateMinuteFrom,input.futureDateMinuteTo{
+       height:20px;cursor:hand;
+	   border:1px solid  #cccccc;
+	   background:#fbfbfb url(datePicker.png) no-repeat right;
+	   font:9pt;
+	   color:#000;
+	   line-height:16px;
+}
+
+input.dateTime,input.dateTimeFrom,input.dateTimeTo,input.dateTimeFrom2,input.dateTimeTo2,input.dateMinuteFrom,input.dateMinuteTo,input.historyDateTime{
+       height:20px;cursor:hand;
+       width:150px;
+	   border:1px solid  #cccccc;
+	   background:#fbfbfb url(datePicker.png) no-repeat right;
+	   font:9pt;
+	   color:#000;
+	   line-height:16px;
+}
+
+input.dateYear,input.dateYearFrom,input.dateYearTo,input.dateMonthOnly,input.dateDayOnly{
+       height:20px;cursor:hand;
+       width:75px;
+	   border:1px solid  #cccccc;
+	   background:#fbfbfb url(datePicker.png) no-repeat right;
+	   font:9pt;
+	   color:#000;
+	   line-height:16px;
+}
+
+input.dateMonth,input.dateMonthFrom,input.dateMonthTo{
+       height:20px;cursor:hand;
+       width:75px;
+	   border:1px solid  #cccccc;
+	   background:#fbfbfb url(datePicker.png) no-repeat right;
+	   font:9pt;
+	   color:#000;
+	   line-height:16px;
+}
+	

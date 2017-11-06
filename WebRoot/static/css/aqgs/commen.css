@@ -1,0 +1,56 @@
+*{
+    margin:0;padding:0;
+}
+a{
+    color:#000;
+} 
+body{
+    background-color: #ebebeb;
+}
+.wy-header{
+    width:100%;position: fixed;top:0;left:0;
+}
+.mask{
+    width:100%;height:100%;background-color: rgba(0,0,0,0.3);position: fixed;top:0;left:0;display: none;z-index: 100;
+}
+.wy-header-icon-back>a{
+    float:left;
+}
+.bigImg{
+    width:100%;height:auto;position: fixed;left:0;top:150px;display: none;z-index: 99999;
+}
+.bigImg img{
+    height: 270px;
+}
+.weui-tabbar__item .foot-menu-home{
+    background:url(../../images/aqgs/shouye.png) no-repeat;
+    background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-home{
+    background:url(../../images/aqgs/shouye1.png) no-repeat;
+    background-size:25px;
+}
+.weui-tabbar__item .foot-menu-singer{
+    background:url(../../images/aqgs/nv.png) no-repeat;
+    background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-singer{
+    background:url(../../images/aqgs/nv1.png) no-repeat;
+    background-size:25px;
+}
+.weui-tabbar__item .foot-menu-contact{
+    background:url(../../images/aqgs/contact.png) no-repeat;
+    background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-contact{
+    background:url(../../images/aqgs/contact1.png) no-repeat;
+    background-size:25px;
+}
+.weui-tabbar__item .foot-menu-my{
+    background:url(../../images/aqgs/my.png) no-repeat;
+    background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-my{
+    background:url(../../images/aqgs/my1.png) no-repeat;
+    background-size:25px;
+}

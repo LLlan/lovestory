@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AppuserMapper">
+
+	<resultMap type="AppUser" id="appuserEntity">
+		<result property="USER_ID" column="USER_ID"/>
+		<result property="USERNAME" column="USERNAME"/>
+		<result property="PHONE" column="PHONE"/>
+	</resultMap>
+	
+	<!-- 根据电话号码和密码获取缓存用户信息 -->
+	<select id="getCacheInfoByPhoneAndPwd" parameterType="pd" resultType="pd">
+			select 
+				scp.backCode,
+				scp.proprietor_id,
+				scp.proprietor_name,
+				scp.residence_id
+		 from sys_cache_proprietor scp
+		 where scp.phone=#{PHONE} and scp.passWord = #{PASSWORD}
+	</select>
+	
+	<!-- 添加到缓存信息表 -->
+	<insert id="putCacheInfo" parameterType="pd">
+		insert into 
+		sys_cache_proprietor(
+			cache_id,
+			phone,
+			passWord,
+			backCode,
+			proprietor_id,
+			proprietor_name,
+			residence_id
+		)values(
+			#{cache_id},
+			#{phone},
+			#{passWord},
+			#{backCode},
+			#{proprietor_id},
+			#{proprietor_name},
+			#{residence_id}
+		)
+	</insert>
+	
+	<!-- 根据backCode获取缓存信息 -->
+	<select id="getCacheInfo" parameterType="pd" resultType="CacheProprietor">
+		select 
+			scp.phone,
+			scp.backCode,
+			scp.proprietor_id,
+			scp.proprietor_name,
+			scp.residence_id
+		 from sys_cache_proprietor scp
+		where scp.backCode = #{backCode}
+	</select>
+	
+	<!-- 清除缓存信息 -->
+	<delete id="deleteCacheInfo" parameterType="pd">
+		delete from 
+			sys_cache_proprietor 
+				where backCode =#{backCode}
+	</delete>
+	
+	<select id="getAppUserInfo" parameterType="pd" resultMap="appuserEntity">
+		select 
+			a.USER_ID,
+			a.USERNAME,
+			a.PHONE
+		 from sys_app_user a where a.PHONE = #{phone}
+	</select>
+	
+	
+	
+	<select id="appUserlistPage" parameterType="page" resultType="pd">
+		select 
+			sau.USER_ID,
+			sau.USERNAME,
+			sau.PASSWORD,
+			sau.NAME,
+			sau.ROLE_ID,
+			sau.LAST_LOGIN_TIME,
+			sau.IP,
+			sau.STATUS,
+			sau.PHONE,
+			sau.EMAIL,
+			sp.proprietorName,
+			sp.sex,
+			sp.occupation,
+			sr.RESIDENCE_NAME,
+			sex.SEX_NAME,
+			sec.estate_company_name
+		from sys_app_user sau
+		left join sys_proprietor sp on sp.telPhone = sau.PHONE
+		left join sys_residence sr on sr.RESIDENCE_ID = sp.residence
+		left join sys_sex sex on sex.SEX_ID = sp.sex
+		left join sys_estate_company sec on sec.estate_company_id = sr.estate_company_id
+	</select>
+	
+	<!-- 根据电话查有没有改用户 -->
+	<select id="findByPhone" parameterType="pd" resultType="pd">
+		select * from SYS_APP_USER  sau
+		where  sau.PHONE = #{phone}
+	</select>
+	
+	
+	<delete id="deleteRepairsImage" parameterType="pd">
+		delete from sys_repairs_image where repairs_id =#{tagetId}
+	</delete>
+	
+	
+	<!-- 新增app用户 -->
+	<insert id="saveU" parameterType="pd">
+		insert into SYS_APP_USER (
+			USER_ID,
+			USERNAME,
+			PASSWORD,
+			NAME,
+			RIGHTS,
+			ROLE_ID,
+			LAST_LOGIN_TIME,
+			IP,
+			STATUS,
+			BZ,
+			PHONE,
+			EMAIL,
+			OPENID,
+			SOURCE,
+			NICKNAME,
+			CITY,
+			PROVINCE,
+			COUNTRY,
+			HEADIMGURL,
+			INTEGRAL,
+			BALANCE,
+			SUBSCRIBE_TIME
+		) values (
+			#{USER_ID},
+			#{USERNAME},
+			#{PASSWORD},
+			#{NAME},
+			#{RIGHTS},
+			#{ROLE_ID},
+			#{LAST_LOGIN_TIME},
+			#{IP},
+			#{STATUS},
+			#{BZ},
+			#{PHONE},
+			#{EMAIL},
+			#{OPENID},
+			#{SOURCE},
+			#{NICKNAME},
+			#{CITY},
+			#{PROVINCE},
+			#{COUNTRY},
+			#{HEADIMGURL},
+			#{INTEGRAL},
+			#{BALANCE},
+			#{SUBSCRIBE_TIME}
+			
+		)
+	</insert>
+	<!-- 登录时判断手机号和密码 -->
+	<select id="getUserByNameAndPwd" parameterType="pd" resultType="pd">
+			select * from SYS_APP_USER  sau
+			where sau.PHONE = #{PHONE} and sau.PASSWORD = #{PASSWORD}
+	
+	</select>
+	
+	<!-- 查该用户是否完善资料 -->
+	<select id="getCompleteDataByPhone" parameterType="pd" resultType="pd">
+		 select * from sys_proprietor where telPhone = #{PHONE}
+	</select>
+	
+	<!-- 根据电话号码查出该用户的所有信息，存于session中 -->
+	<select id="getProprietorByPhone" parameterType="pd" resultType="pd">
+		select 
+			sau.PHONE,
+			sp.residence,
+			sp.proprietorId,
+			sp.proprietorName,
+			sp.IDCard,
+			sp.checkInTime,
+			sp.birthday,
+			sp.unit,
+			sp.occupation,
+			sp.work_unit,
+			sp.definitePosition,
+			sp.familyCount
+		 from sys_app_user sau 
+		left join sys_proprietor sp on sp.telPhone= sau.PHONE	
+		where sau.PHONE =#{PHONE}
+	</select>
+	
+	
+	<update id="updatePwd" parameterType="pd">
+		update SYS_APP_USER set
+		PASSWORD =#{PASSWORD}
+		where PHONE = #{PHONE}
+	</update>
+	
+	
+	<!-- 更新登录时间 -->
+	<update id="updateLastLogin" parameterType="pd">
+		update SYS_APP_USER set 
+		LAST_LOGIN_TIME = #{LAST_LOGIN_TIME} 
+		where PHONE = #{PHONE}
+	</update>
+	
+	<select id="saveRepairsImage" parameterType="pd">
+		insert into sys_repairs_image(
+			image_id,
+			repairs_id,
+			image_url
+		)values(
+			#{image_id},
+			#{repairs_id},
+			#{image_url}
+		)
+		
+	</select>
+	
+	<update id="updateComplaintImageId" parameterType="pd">
+		update sys_complaint_image set
+			complaint_id = #{complaint_id}
+		where complaint_id =#{tagetId}
+	</update>
+	
+	
+	<insert id="saveComplaint" parameterType="pd">
+			insert into sys_complaint (
+				complaint_id,
+				complaint_title,
+				complaint_content,
+				complaint_time
+			)values(
+				#{complaint_id},
+				#{complaint_title},
+				#{complaint_content},
+				#{complaint_time}
+			)
+	</insert>
+	
+	<insert id="saveComplaintImage" parameterType="pd">
+			insert into sys_complaint_image(
+				image_id,
+				complaint_id,
+				image_url
+			)values(
+				#{image_id},
+				#{complaint_id},
+				#{image_url}
+			)
+	</insert>
+	
+	
+	
+	<insert id="saveAppHeadImage" parameterType="pd">
+		insert into sys_app_img(
+			app_img_id,
+			app_img_url,
+			phone
+		)values(
+			#{app_img_id},
+			#{app_img_url},
+			#{phone}
+		)
+	</insert>
+	
+	<insert id="saveAppNickName" parameterType="pd">
+		insert into sys_app_nickname(
+			app_nk_id,
+			app_nickname,
+			app_phone
+		)values(
+			#{app_nk_id},
+			#{app_nickname},
+			#{app_phone}
+		)
+	</insert>
+	
+	<!-- 修改昵称 -->
+	<insert id="updateAppNickName" parameterType="pd">
+		update sys_app_nickname set 
+			app_nickname =#{nickName}
+		where app_phone = #{phone}
+	</insert>
+	
+	
+	<select id="getImageHeadByPhone" parameterType="pd" resultType="pd">
+		select
+		    sai.app_img_id,
+			sai.app_img_url,
+			sai.phone
+		 from sys_app_img sai 
+		where phone =#{phone}
+	</select>
+	
+	<select id="getNickNameByPhone" parameterType="pd" resultType="pd">
+		select 
+			app_nickname
+		 from sys_app_nickname
+		where app_phone = #{phone}
+	</select>
+	
+	<delete id="deleteHeadImage" parameterType="pd">
+		delete from sys_app_img where phone = #{phone}
+	</delete>
+	
+	
+	
+	<!-- 判断用户名和密码 -->
+	<select id="getUserInfo" parameterType="pd" resultType="pd">
+		select * from SYS_APP_USER 
+		where 1=1
+		<if test="USERNAME != null and PASSWORD != null">
+	  	and	
+	  		(
+	  		("USERNAME" = #{USERNAME} and "PASSWORD" = #{PASSWORD})
+	  		or
+	  		("EMAIL" = #{USERNAME} and "PASSWORD" = #{PASSWORD})
+	  		or
+	  		("NUMBER" = #{USERNAME} and "PASSWORD" = #{PASSWORD})
+	  		)
+		</if>
+		<if test="USER_ID != null and USER_ID != ''">
+		and USER_ID = #{USER_ID}
+		</if>
+	</select>
+	
+	
+	<!-- 存入IP -->
+	<update id="saveIP" parameterType="pd">
+		update SYS_APP_USER 
+			set 
+				IP = #{IP}
+			where 
+				USERNAME = #{USERNAME}
+	</update>
+	
+	<!-- 修改 -->
+	<update id="editU" parameterType="pd">
+		update  SYS_APP_USER
+			set USERNAME				= #{USERNAME},
+				NAME					= #{NAME},
+				ROLE_ID 				= #{ROLE_ID},
+				BZ						= #{BZ},
+				PHONE 					= #{PHONE},
+				SFID 					= #{SFID},
+				START_TIME	 			= #{START_TIME},
+				END_TIME 				= #{END_TIME},
+				YEARS					= #{YEARS},
+				STATUS 					= #{STATUS},
+				EMAIL					= #{EMAIL},
+				NUMBER 					= #{NUMBER}
+			<if test="PASSWORD != null and PASSWORD != ''">
+				,PASSWORD				= #{PASSWORD}
+			</if>
+			where 
+				USER_ID = #{USER_ID}
+	</update>
+	
+	<!-- 通过user_id获取数据 -->
+	<select id="findByUiId" parameterType="pd" resultType="pd">
+		select 
+			USER_ID,
+			USERNAME,
+			PASSWORD,
+			NAME,
+			RIGHTS,
+			ROLE_ID,
+			LAST_LOGIN,
+			IP,
+			STATUS,
+			BZ,
+			PHONE,
+			SFID,
+			START_TIME,
+			END_TIME,
+			YEARS,
+			EMAIL,
+			NUMBER
+		from 
+			SYS_APP_USER
+		where 
+			USER_ID = #{USER_ID}
+	</select>
+	
+	<!-- 通过邮箱获取数据 -->
+	<select id="findByUE" parameterType="pd" resultType="pd">
+		select 
+			USER_ID,
+			USERNAME,
+			PASSWORD,
+			NAME,
+			RIGHTS,
+			ROLE_ID,
+			LAST_LOGIN,
+			IP,
+			STATUS,
+			BZ,
+			PHONE,
+			SFID,
+			START_TIME,
+			END_TIME,
+			YEARS,
+			EMAIL,
+			NUMBER
+		from 
+			SYS_APP_USER
+		where 
+			EMAIL = #{EMAIL}
+		<if test="USERNAME != null and USERNAME != ''">
+			and USERNAME != #{USERNAME} 
+		</if>
+	</select>
+	
+	<!-- 通过编号获取数据 -->
+	<select id="findByUN" parameterType="pd" resultType="pd">
+		select 
+			USER_ID,
+			USERNAME,
+			PASSWORD,
+			NAME,
+			RIGHTS,
+			ROLE_ID,
+			LAST_LOGIN,
+			IP,
+			STATUS,
+			BZ,
+			PHONE,
+			SFID,
+			START_TIME,
+			END_TIME,
+			YEARS,
+			EMAIL,
+			NUMBER
+		from 
+			SYS_APP_USER
+		where 
+			NUMBER = #{NUMBER}
+		<if test="USERNAME != null and USERNAME != ''">
+			and USERNAME != #{USERNAME} 
+		</if>
+	</select>
+	
+	<!-- 通过USERNAME获取数据 -->
+	<select id="findByUId" parameterType="pd" resultType="pd">
+		select 
+			USER_ID,
+			USERNAME,
+			PASSWORD,
+			NAME,
+			RIGHTS,
+			ROLE_ID,
+			LAST_LOGIN,
+			IP,
+			STATUS,
+			BZ,
+			PHONE,
+			SFID,
+			START_TIME,
+			END_TIME,
+			YEARS,
+			EMAIL,
+			NUMBER
+		from 
+			SYS_APP_USER
+		where 
+			USERNAME = #{USERNAME}
+	</select>
+	
+	
+	
+	
+	<!-- 用户列表(app用户组) -->
+	<select id="userlistPage" parameterType="page" resultType="pd">
+		select  u.USER_ID,
+				u.USERNAME,
+				u.PASSWORD,
+				u.LAST_LOGIN,
+				u.NAME,
+				u.IP,
+				u.END_TIME,
+				u.YEARS,
+				u.STATUS,
+				u.EMAIL,
+				u.PHONE,
+				u.NUMBER,
+				r.ROLE_ID,
+				r.ROLE_NAME
+		from SYS_APP_USER u, SYS_ROLE r 
+		where u.ROLE_ID = r.ROLE_ID 
+		and 1 = 1
+		and r.PARENT_ID = '7'
+		
+		<if test="pd.USERNAME != null and pd.USERNAME != ''"><!-- 用户名检索 -->
+			and (
+				u.USERNAME LIKE CONCAT(CONCAT('%', #{pd.USERNAME}),'%')
+				or
+				u.EMAIL LIKE CONCAT(CONCAT('%', #{pd.USERNAME}),'%')
+				or
+				u.NUMBER LIKE CONCAT(CONCAT('%', #{pd.USERNAME}),'%')
+				)
+		</if>
+		<if test="pd.ROLE_ID != null and pd.ROLE_ID != ''"><!-- 角色检索 -->
+			and u.ROLE_ID=#{pd.ROLE_ID} 
+		</if>
+		<if test="pd.lastLoginStart!=null and pd.lastLoginStart!=''"><!-- 到期时间检索 -->
+			and u.END_TIME &gt;= #{pd.lastLoginStart} 
+		</if>
+		<if test="pd.lastLoginEnd!=null and pd.lastLoginEnd!=''"><!-- 到期时间检索 -->
+			and u.END_TIME &lt;= #{pd.lastLoginEnd} 
+		</if>
+		<if test="pd.STATUS != null and pd.STATUS != ''"><!-- 状态检索 -->
+			and u.STATUS=#{pd.STATUS} 
+		</if>
+	</select>
+	
+	<!-- 用户列表(全部) -->
+	<select id="listAllUser" parameterType="pd" resultType="pd">
+		select  u.USER_ID,
+				u.USERNAME,
+				u.PASSWORD,
+				u.LAST_LOGIN,
+				u.NAME,
+				u.IP,
+				u.END_TIME,
+				u.YEARS,
+				u.STATUS,
+				u.EMAIL,
+				u.SFID,
+				u.PHONE,
+				u.NUMBER,
+				r.ROLE_ID,
+				r.ROLE_NAME
+		from SYS_APP_USER u, SYS_ROLE r 
+		where u.ROLE_ID = r.ROLE_ID 
+		and 1 = 1
+		and r.PARENT_ID = '7'
+		
+		<if test="USERNAME != null and USERNAME != ''"><!-- 用户名检索 -->
+			and (
+				u.USERNAME LIKE CONCAT(CONCAT('%', #{USERNAME}),'%')
+				or
+				u.EMAIL LIKE CONCAT(CONCAT('%', #{USERNAME}),'%')
+				or
+				u.NUMBER LIKE CONCAT(CONCAT('%', #{USERNAME}),'%')
+				)
+		</if>
+		<if test="ROLE_ID != null and ROLE_ID != ''"><!-- 角色检索 -->
+			and u.ROLE_ID=#{ROLE_ID} 
+		</if>
+		<if test="lastLoginStart!=null and lastLoginStart!=''"><!-- 到期时间检索 -->
+			and u.END_TIME &gt;= #{lastLoginStart} 
+		</if>
+		<if test="lastLoginEnd!=null and lastLoginEnd!=''"><!-- 到期时间检索 -->
+			and u.END_TIME &lt;= #{lastLoginEnd} 
+		</if>
+		<if test="STATUS != null and STATUS != ''"><!-- 状态检索 -->
+			and u.STATUS=#{STATUS} 
+		</if>
+	</select>
+	
+	<!-- 删除用户 -->
+	<delete id="deleteU" parameterType="pd">
+		delete from SYS_APP_USER 
+		where 
+			USER_ID = #{USER_ID}
+	</delete>
+	
+	<!-- 批量删除用户 -->
+	<delete id="deleteAllU" parameterType="String">
+		delete from SYS_APP_USER
+		where 
+			USER_ID in
+  			 <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                  #{item}
+             </foreach>
+	</delete>
+	
+	
+</mapper>

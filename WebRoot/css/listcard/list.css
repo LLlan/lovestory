@@ -1,0 +1,120 @@
+@CHARSET "utf-8";
+
+/*列表页css 调试版*/
+.condition{ text-align:left; width:100%; font-size:9pt;color:#000;font-family: "微软雅黑"}
+.condition span{line-height:33px; height: 35px; padding:0 3px; }
+.condition span,.condition label{font-size: 15px;font-weight:700; color:#2B598C;text-align:center}
+.condition td{ font-size:12px;padding:0px 2px 0 2px; height:40px;border:1px #CECECE solid;line-height:25px; border-bottom:0; vertical-align: middle;}
+.condition input.text{
+    height:25px;
+    cursor:hand;
+    border:1px solid #cccccc;
+    font:10pt;
+    color:#000;
+    line-height:20px;
+}
+.condition button{
+    margin-top: 4px;
+    height: 27px;
+    background-position: 0 70%;
+    line-height: 16px;
+    border-color: #afd0ef;
+}
+.condition input.button{
+    margin-top: 4px;
+    border:1px solid #afd0ef;
+    height:27px;cursor:pointer;
+    font-size:13px;
+    color:#fff;
+    line-height:16px;
+    font-family: "微软雅黑";
+    background-color: #3895f5;
+    padding: 0 8px;
+}
+.condition select{
+    font-size: 11pt;
+}
+
+/*列表标题*/
+.lstTitle{font-size:20px;font-family:"微软雅黑";color:#005590;margin:0 auto 10px auto; text-align:center}
+.lstTitle span{ color:#005590; }
+.distance {height:0px; font-size:0}
+form{margin:0px;}
+
+/*数据列表*/
+.lstTable{ width:100%;border:solid #D0D0D0;border-width:1px 0 0 1px;padding:0;}
+.lstTable th{height:30px;line-height:30px; background-color: #4ea5ff; font:9pt "微软雅黑";color:#fff;border-bottom:1px solid #C7C7C7;border-right:1px solid #C7C7C7;white-space:nowrap;font-weight:bold}
+.lstTable th.rowspan_th{height:60px;line-height:60px;background-color: #4ea5ff;font:9pt "微软雅黑";color:#fff;border-bottom:1px solid #7b7b7b;border-right:1px solid #C7C7C7;white-space:nowrap;font-weight:bold}
+.lstTable tr {border:solid #C7C7C7;border-width:0 1px 1px 0;height:30px;}
+/*3td中增加文字溢出显示样式*/
+.lstTable td {text-overflow:ellipsis;overflow:hidden;white-space:nowrap;border:solid #C7C7C7;border-width:0 1px 1px 0;padding:2px;font:9pt "微软雅黑";color:#000000;text-indent:0.3em;word-break:break-all;} 
+.lstTable tr td.oper{text-align: center;}
+.lstTable_even { background:#eeeeee}
+.lstTable_odd { background: #FFFFFF}
+.lstTable_over { background: #d3e5f8}
+.lstTable a:link { font:10pt "微软雅黑";color: #CA0005; text-decoration:none}
+.lstTable a:hover { font:10pt "微软雅黑";color:#000000; text-decoration:none}
+.lstTable a:visited { font:10pt "微软雅黑";color:#CA0005; text-decoration:none}
+
+/*不需隐藏td数据列表*/
+.nohide td {overflow:auto;white-space:normal;border:solid #C7C7C7;border-width:0 1px 1px 0;padding:2px;font:9pt "微软雅黑";color:#000000;text-indent:0.3em;word-break:break-all;} 
+
+/*页面跳转部分*/
+
+.pageCtrl{font:9pt "微软雅黑";color:#000;height:20px;margin-top:2px;}
+.pageCtrl td{width:30px;border:1px #C7C7C7 solid;border-right:none;}
+
+.ctrl_Btn{border:none!important;padding:0px 1px 0px 0px;}
+.ctrl_Btn input,.go_Page input{height: 25px;}
+.ctrl_Btn select{font-size: 12pt;}
+.pageCurrentNum{width:75px!important;background:url(pic/page_first_bg.gif) repeat-x; text-align:center;}
+.pageSumNum{width:70px!important;background:url(pic/page_first_bg.gif) repeat-x; text-align:center;}
+.page_Num{font-weight:bold;text-decoration:underline;background:url(pic/page_first_bg.gif) repeat-x;text-align:center;cursor:pointer;}
+.page_Num_hover {color: #E96516;text-decoration:none}
+.page_Num_current {color: #F20000;}
+
+.toIndex{background:url(pic/page_back_bg.gif) no-repeat;cursor:pointer;}
+.toIndex_gray{background:url(pic/page_back_bg_gray.gif) no-repeat;}
+.toPrev{background:url(pic/page_previous_bg.gif) no-repeat;cursor:pointer;}
+.toPrev_gray{background:url(pic/page_previous_bg_gray.gif) no-repeat;}
+
+.toNext{background:url(pic/page_last_bg.gif) no-repeat;cursor:pointer;}
+.toNext_gray{background:url(pic/page_last_bg_gray.gif) no-repeat;}
+.toLast{background:url(pic/page_forward_bg.gif) no-repeat;cursor:pointer;}
+.toLast_gray{background:url(pic/page_forward_bg_gray.gif) no-repeat;}
+
+input.pageText{font:10pt '微软雅黑';color:#777;width:28px;line-height:18px;border-style:none;text-align:center;}
+.go_Page{border:none!important;border-left:1px #bababa solid;padding:1px 2px 0px 2px;}
+
+/*应急处置左菜单样式列表*/
+.programLeftBody {
+    border: 1px solid #638862; 
+    background-color: #f1fff0; 
+    padding: 5px 10px 5px 0;
+}
+.programLeftButton {
+    background-image: url("../../pic/workProgram/leftButton.gif");
+    width: 125px;
+    height: 34px;
+    line-height: 34px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.clickedButton{
+    background-image: url("../../pic/workProgram/leftButtonChange.jpg") ;
+}
+.programBackColor {
+    background-color: #F0FBFD; 
+}
+/*黑屏div样式*/
+.blankBgDiv {
+    width: 105%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 10000;
+    background-color: black;
+    filter:alpha(opacity:50);
+    opacity: 0.4;
+}

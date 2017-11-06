@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	功能：后台会员管理
+ -->
+<mapper namespace="memberManageMapper">
+	<!-- 
+		获取会员列表
+	 -->
+	<select id="getMemberlistPage" parameterType="pd" resultType="pd">
+		SELECT
+			member_id,
+			phone,
+			nicheng,
+			xingming,
+			identity,
+			member_type,
+			`status`,
+			last_login_time,
+			ip,
+			bz,
+			registerTime
+		FROM
+			tb_member
+		<where>
+			<if test="pd.searchName!='' and pd.searchName!=null">
+				(phone like CONCAT(CONCAT('%', #{pd.searchName}),'%')
+				or nicheng like CONCAT(CONCAT('%', #{pd.searchName}),'%')
+				or xingming like CONCAT(CONCAT('%', #{pd.searchName}),'%'))
+			</if>
+		</where>
+		ORDER BY
+			registerTime DESC
+	</select>
+	
+	<!-- 
+		获取所有会员列表信息
+	 -->
+	<select id="listAllMember" parameterType="pd" resultType="pd">
+		SELECT
+			IFNULL(phone,'') phone,
+			IFNULL(nicheng,'') nicheng,
+			IFNULL(member_type,'') member_type,
+			IFNULL(identity,'') identity,
+			IFNULL(registerTime,'') registerTime,
+			IFNULL(xingming,'') xingming,
+			IFNULL(sex,'') sex,
+			IFNULL(shengao,'') shengao,
+			IFNULL(tizhong,'') tizhong,
+			IFNULL(xueli,'') xueli,
+			IFNULL(isHun,'') isHun,
+			IFNULL(link_phone,'') link_phone,
+			IFNULL(weixin,'') weixin,
+			IFNULL(qq,'') qq,
+			IFNULL(email,'') email,
+			IFNULL(minzu,'') minzu,
+			IFNULL(hukouszd,'') hukouszd,
+			IFNULL(juzhudi,'') juzhudi,
+			IFNULL(birthday,'') birthday,
+			IFNULL(isOnly,'') isOnly,
+			IFNULL(zhiye,'') zhiye,
+			IFNULL(nianxin,'') nianxin,
+			IFNULL(biyeyx,'') biyeyx,
+			IFNULL(isFngCar,'') isFngCar,
+			IFNULL(isParent,'') isParent,
+			IFNULL(zo_age,'') zo_age,
+			IFNULL(zo_shengao,'') zo_shengao,
+			IFNULL(zo_xueli,'') zo_xueli,
+			IFNULL(zo_isHun,'') zo_isHun,
+			IFNULL(ziwojieshao,'') ziwojieshao,
+			IFNULL(xingqu,'') xingqu,
+			IFNULL(`status`,'') `status`,
+			IFNULL(last_login_time,'') last_login_time
+		FROM
+			tb_member
+		ORDER BY
+			registerTime DESC
+	</select>
+	<!--  
+		改变账号状态
+	-->
+	<update id="updateMemberStatus" parameterType="pd">
+		UPDATE tb_member 
+		SET 
+			`status`=#{status}
+		WHERE
+			member_id=#{member_id}
+	</update>
+	<!--  
+		根据ID获取指定会员的信息
+	-->
+	<select id="getInformationOfMemberById" parameterType="pd" resultType="pd">
+		SELECT 
+			*
+		FROM tb_member
+		WHERE 
+			member_id=#{member_id}
+	</select>
+	
+	<!--  
+		获取提现申请列表
+	-->
+	<select id="getwithdrawcashlistPage" parameterType="page" resultType="pd">
+		SELECT
+			twc.*,
+			tbm.phone,
+			tbm.nicheng,
+			tbm.identity
+		FROM tb_withdraw_cash twc
+		LEFT JOIN tb_member tbm ON tbm.member_id=twc.member_id
+		<where>
+			and twc.state=#{pd.state}
+			<if test="pd.searchName!='' and pd.searchName!=null">
+				and (tbm.phone like CONCAT(CONCAT('%', #{pd.searchName}),'%')
+				or twc.realName like CONCAT(CONCAT('%', #{pd.searchName}),'%'))
+			</if>
+		</where>
+		ORDER BY twc.shenqing_time ASC
+	</select>
+	<!-- 
+		获取所有提现申请列表
+	 -->
+	<select id="listAllMemberOfHytx" parameterType="pd" resultType="pd">
+		SELECT
+			twc.amount,
+			twc.shenqing_time,
+			twc.tixian_method,
+			twc.realName,
+			twc.account,
+			twc.caozuoName,
+			tbm.phone,
+			tbm.nicheng,
+			tbm.identity
+		FROM tb_withdraw_cash twc
+		LEFT JOIN tb_member tbm ON tbm.member_id=twc.member_id
+		<where>
+			twc.state=#{state}
+		</where>
+		ORDER BY twc.shenqing_time ASC	
+	</select>
+	
+	<!--  
+		改变状态
+	-->
+	<update id="updateWithDrawCashState" parameterType="pd">
+		UPDATE tb_withdraw_cash twc
+		SET 
+			twc.state = #{state},
+			twc.imgPath = #{imgPath},
+			twc.caozuoName = #{caozuoName},
+			twc.feedback_time = #{feedback_time}
+		WHERE
+			twc.withdraw_cash_id = #{withdraw_cash_id}
+	</update>
+	<!--  
+		会员缴费列表
+	-->
+	<select id="getmemberorderlistPage" parameterType="page" resultType="pd">
+		SELECT
+			tbo.*,
+			tbm.phone,
+			tbm.xingming,
+			tbm.identity
+		FROM tb_order tbo
+		LEFT JOIN tb_member tbm ON tbm.member_id=tbo.member_id
+		<where>
+			<if test="pd.searchName!='' and pd.searchName!=null">
+				and tbm.phone like CONCAT(CONCAT('%', #{pd.searchName}),'%')
+				or tbm.xingming like CONCAT(CONCAT('%', #{pd.searchName}),'%')
+			</if>
+		</where>
+		ORDER BY tbo.create_order_time desc
+	</select>
+	<!-- 
+		获取所有会员缴费信息
+	 -->
+	<select id="listAllMemberOfYfkhy" parameterType="pd" resultType="pd">
+		SELECT
+			IFNULL(tbo.create_order_time,'') create_order_time,
+			IFNULL(tbo.order_number,'') order_number,
+			IFNULL(tbo.money,'') money,
+			IFNULL(tbm.phone,'') phone,
+			IFNULL(tbm.xingming,'') xingming,
+			IFNULL(tbm.identity,'') identity
+		FROM tb_order tbo
+		LEFT JOIN tb_member tbm ON tbm.member_id=tbo.member_id
+		ORDER BY tbo.create_order_time desc
+	</select>
+</mapper>

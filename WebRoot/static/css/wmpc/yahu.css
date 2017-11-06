@@ -1,0 +1,124 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+body { background:#f4f4f4; color:#555; font-size:12px; font-family: Verdana, Arial, Helvetica, sans-serif; }
+td,th,caption { font-size:14px; }
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal;}
+
+a { color:#555; text-decoration:none; }
+a:hover { text-decoration:none;outline:none;}
+img { border:none; }
+ol,ul,li { list-style:none; }
+a:focus{
+  text-decoration:none;
+  outline:none;
+}
+
+:focus{
+  outline:0;
+}
+input, textarea, select, button { font:14px Verdana,Helvetica,Arial,sans-serif;border: none;
+  outline: none;}
+table { border-collapse:collapse; }
+.clearfix:after {content: "."; display: block; height:0; clear:both; visibility: hidden;}
+.clearfix { *zoom:1; }
+*{
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+.left{
+  text-align: left;
+}
+.right{
+  text-align: right;
+}
+.text{
+  text-align: center;
+}
+.lf {
+  float: left;
+}
+.rt {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+input {
+  border: none;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+img {
+  max-width: 100%;
+}
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.col-xs-12 {
+  width: 100%;
+}
+.col-xs-11 {
+  width: 91.66666667%;
+}
+.col-xs-10 {
+  width: 83.33333333%;
+}
+.col-xs-9 {
+  width: 75%;
+}
+.col-xs-8 {
+  width: 66.66666667%;
+}
+.col-xs-7 {
+  width: 58.33333333%;
+}
+.col-xs-6 {
+  width: 50%;
+}
+.col-xs-5 {
+  width: 41.66666667%;
+}
+.col-xs-4 {
+  width: 33.33333333%;
+}
+.col-xs-3 {
+  width: 25%;
+}
+.col-xs-2 {
+  width: 16.66666667%;
+}
+.col-xs-1 {
+  width: 8.33333333%;
+}
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+  float: left;
+}
+.text-center{
+  text-align: center;
+}

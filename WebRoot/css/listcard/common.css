@@ -1,0 +1,216 @@
+﻿@charset "utf-8";
+
+html{height:100%;}
+body{height:100%;}
+a{text-decoration: none;}
+div.scrollContent{overflow-y:auto;  height:100%;}
+input{ 
+	zoom: expression(function(ele){(ele.className)?ele.className+=" "+ele.type:ele.className=ele.type; ele.style.zoom = "1";}(this));
+}
+/* BUTTON按钮 */
+button {
+	   border:1px solid #afd0ef;
+	   padding:4px;
+       height:27px; 
+       cursor:pointer;
+	   font-size:13px;
+	   color:#fff;
+	   line-height:16px;
+	   background-color: #3895f5;
+        font-family: "微软雅黑";
+}
+/* INPUT之TEXT按钮 */
+input.text{
+       height:20px;cursor:hand;
+	   border:1px solid  #cccccc;
+	   background:url(pic/inputbg.gif);
+	   background-position: 0 50%;
+	   font:9pt;
+       font-family: "微软雅黑";
+	   color:#000;
+	   line-height:16px;}
+input.text:hover {
+	border: 1px solid #3895f5;
+	}
+input.text{
+	tesion:expression(onmouseover=function() 
+	{this.style.backgroundColor="#F0F9FB"})}
+input.password{
+       height:20px;cursor:hand;
+	   border:1px solid  #cccccc;
+	   background:url(pic/inputbg.gif);
+	   font:9pt;
+	   color:#000;
+       font-family: "微软雅黑";
+	   line-height:16px;}
+input.password:hover {
+	border: 1px solid #3895f5;
+	}
+input.passowrd{
+	tesion:expression(onmouseover=function()
+	{this.style.backgroundColor="#F0F9FB"})}
+
+/* INPUT之RESET按钮 */
+.other input.reset{
+	   border:0px solid #7690B4;
+	   padding:3px;
+       height:23px;cursor:pointer;
+	   font-size:13px;
+	   color:#104a4b;
+	   line-height:14px;
+	   background-color: #3895f5;
+       font-family: "微软雅黑";
+}
+input.reset{
+	   border:0px solid #7690B4;
+	   padding:3px;
+       height:27px;cursor:pointer;
+	   font-size:13px;
+	   color:#fff;
+	   line-height:16px;
+	   background-color: #3895f5;}
+/* INPUT之submit按钮 */
+
+a.button {
+		border:1px solid #9bbfc6;
+    	padding:5px 5px;
+       	height:23px;cursor:pointer;
+       	text-decoration: none;
+       	text-align: center;
+    	font:8pt "微软雅黑";
+    	display: inline-table;
+    	color:#104a4b;
+    	line-height:14px;
+    	background:#ffffff url(pic/grid-blue-split.gif) repeat-x;
+}
+
+input.submit{	   
+	   border:0px solid #afd0ef;
+	   padding:3px;
+       height:27px;cursor:pointer;
+	   font-size:13px;
+	   color:#fff;
+	   line-height:16px;
+       font-family: "微软雅黑";
+	   background-color: #3895f5;}
+.other input.submit{	   
+	   border:0px solid #7690B4;
+	   padding:3px;
+       height:23px;cursor:pointer;
+	   font:9pt;
+	   color:#104a4b;
+	   line-height:14px;
+       font-family: "微软雅黑";
+	   background-color: #3895f5;}
+input.submit .other{
+	   padding:6px;
+       height:23px;cursor:pointer;
+	   font:9pt;
+	   color:#fff;
+	   line-height:16px;
+       font-family: "微软雅黑";
+	   background-color: #3895f5;border:0;
+}
+/* INPUT之button按钮 */
+input.button{
+	   border:1px solid #afd0ef;
+	   padding:3px;
+       height:27px;cursor:pointer;
+	   font-size:13px;
+	   color:#fff;
+	   line-height:16px;
+       font-family: "微软雅黑";
+	   background-color: #3895f5;}
+	   
+.pageCtrl input.button, .go_Page input{
+	   border:1px solid #9bbfc6;
+       height:25px;cursor:pointer;
+	   font:9pt;
+	   line-height:14px;
+	   background-color: #E5E5E5;
+	   border-color: gray;
+	   color: #000;
+	   font-family: "微软雅黑";
+	   /* background:#ffffff url(pic/grid-blue-split.gif) repeat-x; */
+	   }
+
+.ctrl_Btn input,.go_Page input{height: 25px;}
+	   
+select { font-size:10pt;}
+img {border:none}
+
+body.noPadding{
+	padding:0;
+	margin:0;
+}
+
+div.mutiBtn{
+	display:inline;
+	margin-left:5px;
+	cursor:pointer;
+	width:16px;
+	height:16px;
+	background: url(pic/mutiBtn.png) no-repeat;
+}
+
+div.step1{height:35px;width:159px;margin-bottom:10px;background: url(pic/step1_bg.jpg) no-repeat;}
+div.step2{height:35px;width:159px;margin-bottom:10px;background: url(pic/step2_bg.jpg) no-repeat;}
+div.step3{height:35px;width:159px;margin-bottom:10px;background: url(pic/step3_bg.jpg) no-repeat;}
+div.step4{height:35px;width:159px;margin-bottom:10px;background: url(pic/step4_bg.jpg) no-repeat;}
+
+div a.sj01 {background:url(pic/sjxx_bg.gif) no-repeat; text-decoration:none; color:#006ea5; font-size:14px; padding-left:20px;}
+div a.sj01:hover{color:#ff0000}
+div a.sj02 {background:url(pic/xzsj_bg.gif) no-repeat; text-decoration:none; color:#006ea5; font-size:14px; padding-left:20px;}
+div a.sj02:hover{color:#ff0000}
+div a.back01 {background:url(pic/back_bg.gif) no-repeat; text-decoration:none; color:#006ea5; font-size:14px; padding-left:20px;}
+div a.back01:hover{color:#ff0000}
+
+/*弹出多选图标*/
+.multiSelect{
+	background: url(pic/mutiBtn.png) ;
+	width: 16px;
+	height: 16px;
+	display: inline;
+	cursor: pointer;
+}
+
+/*弹出单选图标*/
+.radioSelect{
+	background: url(pic/radioBtn.png) ;
+	width: 16px;
+	height: 16px;
+	display: inline;
+	cursor: pointer;
+}
+
+.mapSelector{
+	background: url(pic/mapSelector.png) ;
+	width: 18px;
+	height: 18px;
+	display: inline;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+/*点击标签排序功能*/
+.labelSorting{
+	cursor: pointer;
+}
+
+/*返回按钮重写*/
+#onBack{
+    border:0px solid;
+    cursor:pointer;
+    color:#434343;
+    background-color: #d2d2d2;
+    font-family: "微软雅黑";
+}
+
+/*返回按钮重写*/
+#back{
+    border:0px solid;
+    cursor:pointer;
+    color:#434343;
+    background-color: #d2d2d2;
+    font-family: "微软雅黑";
+}

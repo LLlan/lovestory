@@ -1,0 +1,85 @@
+.top,.con{padding: 5%;background: #FFFFFF;margin: 4% 0;color:#343d46 ;}
+.top div:first-child{font-size: .9rem;}
+.top div:last-child{margin-top: 15px;}
+.top div:last-child span{margin-right: .4rem;}
+.apply_msg{margin-top: 15px;}
+.apply_li{border-top: 1px solid #e5e9ea;}
+.apply_li li{padding: 10px 0; border-bottom: 1px solid #e5e9ea;}
+.apply_li li label:last-child,.sum span{color:#fe8336;}
+.apply_li li label{line-height: 20px;position: relative;top: -5px;}
+.apply_li li label:first-child{position: relative;top: 3px;}
+.apply_li li label:last-child{position: relative;top: 3px;}
+.sum{padding: 15px 0;}
+.order_btn a{
+	border-radius: 5px;
+	display: block;
+	width: 95%;
+	padding: 3% 0;
+	background-color: #06c1ae;
+	border: 0;
+	color: #FFFFFF;
+	}
+/**支付方式*/
+.icon-weixin{
+	display: inline-block;
+	background: url(../img/paywaylogo.png);
+	background-size: 24px 50px;
+	width: 24px;
+	height: 20px;
+	}
+.icon-zhifubao{
+	display: inline-block;
+	background: url(../img/paywaylogo.png);
+	background-size: 24px 50px;
+	background-position-y: -30px;
+	width: 24px;
+	height: 20px;
+	position: relative;
+}
+.footer{position: fixed;bottom: 0;right: 0;background: #FFFFFF;}
+.footer,.footer ul{width: 100%;}
+.footer ul li{
+	float: left;
+}
+.footer ul li:first-child{width: 60%;text-align: right;padding-right: 10px;line-height: 3rem; height: 3rem;}
+.footer ul li:first-child span{color:#fe8336;font-size: 1.5rem;}
+.footer ul li:first-child span:first-child{font-size: 11px;}
+.footer ul li:last-child{width: 40%;position: relative;}
+.apply_btn{background: #06C1AE;color: #FFFFFF;width: 100%;border: none;height: 3rem;border-radius:0 ;}
+
+/*物业缴费**/
+.pay_con{width: 100%;background: #ff8236;position: relative;}
+.pay_li li{float: left;width: 50%;text-align: center;padding: 3% 0 1% 0;}
+.pay_li li p{color: #ffffff;}
+.pay_li li p:nth-of-type(2){font-size: 2rem;}
+.pay_list{background: #FFFFff;padding:0 3%;}
+.pay_list .apply_li{border: 0;}
+.apply_li input{margin-left: 5px;}
+.pay_list ul li:last-child{border: 0;}
+.pay_btn{width: 100%;}
+.pay_btn .btn_submit{
+	width: 95%;
+	padding: 3% 0;
+	background-color: #06c1ae;
+	border: 0;
+	color: #FFFFFF;
+	}
+.next_con{font-size: 1.4rem;color: #c9c8ce;}
+.dialog_pay{position: absolute;width:100%;z-index: 997;text-align: center;background: #f2f3f5;padding: 5% 0;top: 43%;color: #333b46;}
+._paycon{position: fixed;height: 300px;background: #f2f3f5;bottom: 38px;width: 100%;padding: 5% 0;}
+.date{width: 100%;position: relative;}
+.date ul{width: 100%;margin-top: 15px;cursor: pointer;text-align: center;}
+.date ul li{float: left;display:inline;padding: 2% 0;width: 27%;border: 1px solid #AAAAAA;border-radius:5px;margin: 0 10px;cursor: pointer;}
+.clich_li{background: #d3f9f5;}
+.date ul li label{display: block; white-space: normal;word-break:keep-all;overflow:hidden;text-overflow:ellipsis;}
+.date ul li label:last-child{color: #8F8F94;margin-top: 5px;}
+/**遮罩*/
+.mask{
+	position: fixed;
+	top: 00;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 999;
+	background: rgba(0,0,0,.3);
+}

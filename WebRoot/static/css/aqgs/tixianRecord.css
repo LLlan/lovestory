@@ -1,0 +1,28 @@
+.tixianBox{
+    width:100%;
+}
+.tixian{
+    width:92%;padding:0 4%;background-color:#fff;color:#000;font-size: 16px;margin-top:10px;
+    position: relative;
+}
+.tixian>h3{
+    width:46%;font-weight:400;padding-top:10px;
+}
+.tixian>p{
+    width:46%;color:#8c8c8c;padding:10px 0 15px 0;font-size: 14px;
+}
+.span1{
+    width: 46%;
+    float: right;
+    text-align: right;
+    margin-top: -27px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.span2{
+    width: 40%;
+    float: right;
+    text-align: right;
+    margin-top: -31px;
+    font-size: 1px;
+}

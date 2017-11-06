@@ -1,0 +1,74 @@
+.pay_con div input {
+	width: 95%;
+	border: 0;
+}
+
+.pay_con div:nth-of-type(1) {
+	position: relative;
+}
+
+.help {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #acafb6;
+	border-radius: 50%;
+	background: #FFFFFF;
+	color: #acafb6;
+	position: fixed;
+	right: 4%;
+	top: 95px;
+}
+
+.pay_con .btn_submit {
+	width: 95%;
+	padding: 3% 0;
+	background-color: #06C1AE;
+	color: #FFFFFF;
+}
+
+.tooltip {
+	position: absolute;
+	margin-left: 2.5%;
+	background: #FFFFFF;
+	width: 95%;
+	line-height: 30px;
+	height: 80px;
+	border-radius: 5px;
+	text-align: left;
+	text-indent: 1em;
+	z-index: 999;
+	padding: 10px 0;
+}
+
+.tooltip::after {
+	right: 10px;
+	position: absolute;
+	top: -10px;
+	bottom: 0;
+	content: '';
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #fff;
+}
+
+
+/*.tooltip div{margin-top: 10px;}*/
+
+.tooltip div:first-child {
+	color: #3b3b3b;
+}
+
+.tooltip div:last-child {
+	color: #888888;
+}
+/**微信支付**/
+.pay_header h1{top: -5px;}
+.weixin-title{display: block;font-size: 12px;position: relative;top: -30px;}
+.weixin_con{padding: 15px 30px;white-space: normal;word-break:keep-all;overflow:hidden;text-overflow:ellipsis;}
+.weixin_con label:last-child{margin-top: 10px;display: block;font-size: 2rem;}
+.payee{padding: 5% 6%;background: #FFFFFF;}
+.payee label:first-child{color: #8F8F94;}

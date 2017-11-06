@@ -1,0 +1,78 @@
+.container{
+  margin-top: 56px;
+}
+.container h1{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  background-color: #EBEBEB;
+}
+.contact{
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  line-height: 30px;
+  background-color: #fff;
+  color: #000;
+
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+.contact button{
+  width: 60px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  color: #fff;
+  background-color: #E8275E;
+  border-radius: 5px;
+   margin-top: 3px;
+  float: right;
+}
+.bg_k{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  margin-left: -125px;
+  margin-top: -60px;
+  width: 250px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: none;
+}
+.bg_k .bg_1{
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  font-size: 15px;
+  border-bottom: 1px solid #CACACA;
+}
+.bg_k .bg_2{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  display: -webkit-flex;
+  display: -webkit-box;
+}
+.cancel,.call{
+  display: block;
+  height: 50px;
+  flex: 1;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  text-align: center;
+  align-self: center;
+  font-size: 15px;
+}
+.cancel{
+  border-right: 1px solid #CACACA;
+}
+.call{
+  color: #EB406F;
+}

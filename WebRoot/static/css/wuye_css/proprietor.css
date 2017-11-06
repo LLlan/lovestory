@@ -1,0 +1,187 @@
+/*add 2015/12/1*/
+table{
+	width: 100%;
+	text-align: center;
+}
+table,tr,td{
+	border: 0;
+}
+.re_p a{padding: 2px;border-radius: 3px;font-size: 12px;}
+.delete{background:#fa5757;color: #fff;}
+.edit{background:#006699;color: #fff;}
+.check{background:#007AFF;color: #fff;}
+.re_p input{
+	padding: 1%;
+}
+.re_p tr{
+	height: 2rem;
+}
+.re_p tr:nth-of-type(even){
+	background: #EEEEEE;
+}
+.on a{
+	margin: 0 2px;
+}
+
+.add_carMsg{
+	border-top: 1px solid #D6D6D6;
+}
+.birth{
+	border: 0;
+}
+.birth input{
+	width:25% ;
+}
+/*====*/
+.title {
+	background: #ebecee;
+	padding: 3%;
+	border-bottom: 1px solid #b5b5b5;
+}
+
+.icon-down {
+	display: inline-block;
+	background: url(../../img/down.png) no-repeat;
+	background-size: 15px;
+	width: 15px;
+	height: 11px;
+	margin-left: 10px;
+}
+
+.msg_con li {
+	line-height: 53px;
+	height: 53px;
+	white-space: nowrap;
+	overflow: auto;
+	overflow: hidden;
+	background: #FFFFFF;
+	border-bottom: 1px solid #b5b5b5;
+}
+
+.msg_con li input {
+	border: 0;
+	border-left: 1px solid #b5b5b5;
+	border-radius: 0;
+}
+
+.msg_con li label {
+	font-size: 14px;
+	padding: 0 1rem;
+}
+.separat label:nth-of-type(2){border-left: 1px solid #b5b5b5;padding: 12px;}
+.separat input{width: 35%;}
+.contacts,.register,.car{background: #FFFFFF;}
+.contacts_con label{color: #afafaf;}
+.contacts_con input:first-child{
+	width: 30%;
+	border-left: 0;
+}
+.add_contact{padding: 3% 0;text-align: center;background: #FFFFFF;}
+.true_btn{padding: 3% 0;text-align: center;background: #ebecee;}
+.add_contact button{margin: 0 auto !important;padding: 1% 5%;font-size: 20px;color: #D8D8D8;}
+.upload {
+	position: relative;
+	white-space: nowrap;
+}
+
+.addImg {
+	background: url(../../img/add_img.png) no-repeat #FFFFFF;
+	background-size: 30px 30px;
+	width: 76px;
+	height: 80px;
+	display: block;
+	background-position: 25px;
+}
+
+.img_num {
+	display: block;
+	float: right;
+	position: relative;
+	margin: 45px 3% 0 0;
+	color: #B6B6B6;
+	font-size: 14px;
+}
+
+.a-upload {
+	line-height: 50px;
+	position: absolute;
+	left: 75%;
+	top: 9%;
+	cursor: pointer;
+	color: #888;
+	background: #fff;
+	overflow: hidden;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1
+}
+
+.a-upload input {
+	position: absolute;
+	font-size: 100px;
+	right: 0;
+	top: 0;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	cursor: pointer
+}
+
+.a-upload:hover {
+	color: #444;
+	background: #fff;
+	border-color: #ccc;
+	text-decoration: none
+}
+
+.photo_con li{
+	padding: 10px;
+	white-space: nowrap;
+	overflow: auto;
+	overflow: hidden;
+	background: #FFFFFF;
+	border-bottom: 1px solid #b5b5b5;
+	}
+.photo_msg{
+	position: relative;
+	line-height: 120px;
+	height: 120px;
+	}
+.photo_msg label{
+	display:inline-block;
+	width: 60%;
+	background: #ebecee;
+	border-radius: 5px;
+	padding:0 5%;
+	line-height: 50px;
+	height: 50px;
+	min-width: 180px;
+	}
+.photo_msg input[type=text]{
+	width: 80%;
+	margin-left: 10px;
+	border: 0;
+	border-left:1px solid #b5b5b5;
+	border-radius:0;
+	background: #ebecee;
+	}
+.photo_img{
+	display: inline-block;
+	position: absolute;
+	right: 2%;
+	top: 10%;
+	width: 60px;
+	height: 100px;
+	border: 1px dashed #b5b5b5;
+	line-height: 100px;
+	color: #b5b5b5;
+	text-align: center;
+	cursor: pointer;
+	 word-wrap: break-word;
+	 word-break: normal;
+}
+.true_submit{background: #00c0ab;color: #FFFFFF;padding:2% 5%;border: 0;}
+
+/**装修申请*/
+.apply{background: #FFFFFF;border-bottom: 1px solid #b5b5b5;padding: 25px 30px;color: #b0b0b0;}
+.apply label:first-child{position: relative;}
+.apply label:last-child{text-indent: 2em;}

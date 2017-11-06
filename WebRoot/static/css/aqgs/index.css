@@ -1,0 +1,153 @@
+.Header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  display: -webkit-flex;
+  display: -webkit-box;
+  width: 100%;
+  padding:13px 0;
+  background-color: #E8275E;
+}
+.Header .logo,.Header .logo img{
+  width: 70px;
+  height: 30px;
+  margin-right: 10px;
+}
+.Header .Search{
+  flex: 1;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  height: 30px;
+  line-height: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+.Header .Search input{
+  outline: none;
+  border: none;
+  width: 80%;
+  height: 30px;
+  line-height: 20px;
+  border-radius: 5px;
+  padding: 5px 0 5px 10px;
+}
+.Header .Search .Btn{
+  float: right;
+  width: 20%;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 5px;
+  color: #000;
+  font-size: 13px;
+  text-align: center;
+  background-color: #FFA200;
+}
+/*����ͷ��*/
+.headlines{
+  display: flex;
+  display: -webkit-flex;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  margin-top: -6px;
+  background-color: #fff;
+  border: 1px solid #f4f4f4;
+}
+.headlines .head_lt{
+  color: #fff;
+  background-color: #E8275E;
+  text-align: center;
+  width: 90px;
+  height: 40px;
+  font-size: 15px;
+}
+.headlines .head_rt{
+  flex: 1;
+  background-color: #EBEBEB;
+}
+.headlines .head_rt a{
+  margin-right: 15px;
+}
+/*������Ϣ*/
+.Box li{
+  float: left;
+  width: 48%;
+  height: auto;
+  margin: 1%;
+  background-color: #fff;
+}
+.Box li a{
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+}
+.Img{
+  width: 48vw;
+  height: 48vw;
+  border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  position: relative;
+}
+.Img img{
+	  max-width: none;
+		position: absolute;
+}
+
+.Box li a .message{
+  padding: 5px;
+}
+.Box li a .message .name{
+
+  font-size: 15px;
+  color: #000;
+}
+.Box li a .message .age{
+  width: 100%;
+  overflow: hidden;
+}
+.Box li a .message .age span{
+  color: #3D3D3D;
+  font-size: 13px;
+}
+
+/*�ײ�*/
+.bot60{
+  width: 100%;
+  height: 52px;
+}
+.weui-tabbar__item .foot-menu-home{
+  background:url(../../images/aqgs/shouye.png) no-repeat;
+  background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-home{
+  background:url(../../images/aqgs/shouye1.png) no-repeat;
+  background-size:25px;
+}
+.weui-tabbar__item .foot-menu-singer{
+  background:url(../../images/aqgs/nv.png) no-repeat;
+  background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-singer{
+  background:url(../../images/aqgs/nv1.png) no-repeat;
+  background-size:25px;
+}
+.weui-tabbar__item .foot-menu-contact{
+  background:url(../../images/aqgs/contact.png) no-repeat;
+  background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-contact{
+  background:url(../../images/aqgs/contact1.png) no-repeat;
+  background-size:25px;
+}
+.weui-tabbar__item .foot-menu-my{
+  background:url(../../images/aqgs/my.png) no-repeat;
+  background-size:25px;
+}
+.weui-tabbar__item.weui-bar__item--on .foot-menu-my{
+  background:url(../../images/aqgs/my1.png) no-repeat;
+  background-size:25px;
+}

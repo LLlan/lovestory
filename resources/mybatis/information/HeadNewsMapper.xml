@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="headNewsMapper">
+	<!--  
+		获取列表
+	-->	
+	<select id="headnewslistPage" parameterType="page" resultType="pd">
+		SELECT 
+			*
+		FROM sys_headnews 
+		ORDER BY addTime DESC
+	</select>
+	<!--  
+		获取列表(全部)
+	-->	
+	<select id="headNewsList" parameterType="pd" resultType="pd">
+		SELECT 
+			*
+		FROM sys_headnews 
+		ORDER BY addTime DESC
+	</select>
+	<!--  
+		保存的信息
+	-->
+	<insert id="insertHeadNews" parameterType="pd">
+		INSERT INTO sys_headnews (
+			headNews_id,
+			title,
+			link,
+			addTime
+		)
+		VALUES(
+			#{headNews_id},
+			#{title},
+			#{link},
+			#{addTime}
+		)
+	</insert>
+	<!--  
+		更新
+	-->
+	<update id="updateHeadNews" parameterType="pd">
+		update sys_headnews
+		set
+			title=#{title},
+			link=#{link},
+			addTime=#{addTime}
+		where headNews_id=#{headNews_id}
+	</update>
+	<!--  
+		根据ID获取对象信息
+	-->
+	<select id="getHeadNewsById" parameterType="pd" resultType="pd">
+		SELECT
+			*
+		FROM sys_headnews
+		WHERE 
+			headNews_id=#{headNews_id}
+	</select>
+	<!--  
+		根据ID删除指定对象信息
+	-->
+	<delete id="deleteHeadNewsById" parameterType="pd">
+		DELETE 
+		FROM sys_headnews
+		WHERE headNews_id in
+		<foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+</mapper>

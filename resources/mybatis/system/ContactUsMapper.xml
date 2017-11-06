@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contactUsMapper">
+	<!--  
+		获取联系我们列表
+	-->	
+	<select id="contactuslistPage" parameterType="page" resultType="pd">
+		SELECT 
+			*
+		FROM sys_contactus 
+	</select>
+	<!--  
+		获取联系我们对象信息(肯定只有一条记录)
+	-->
+	<select id="getDataOfContactUs" parameterType="pd" resultType="pd">
+		SELECT 
+			*
+		FROM sys_contactus
+	</select>
+	<!--  
+		保存联系我们的信息
+	-->
+	<insert id="insertContactUs" parameterType="pd">
+		INSERT INTO sys_contactus (
+			contactus_id,
+			tel_phone,
+			koukou,
+			weixin
+		)
+		VALUES(
+			#{contactus_id},
+			#{tel_phone},
+			#{koukou},
+			#{weixin}
+		)
+	</insert>
+	<!--  
+		更新联系我们
+	-->
+	<update id="updateContactUs" parameterType="pd">
+		update sys_contactus
+		set
+			tel_phone=#{tel_phone},
+			koukou=#{koukou},
+			weixin=#{weixin}
+		where contactus_id=#{contactus_id}
+	</update>
+	<!--  
+		根据ID获取对象信息
+	-->
+	<select id="getContactUsById" parameterType="pd" resultType="pd">
+		SELECT
+			*
+		FROM sys_contactus
+		WHERE 
+			contactus_id=#{contactus_id}
+	</select>
+	<!--  
+		根据ID删除指定对象信息
+	-->
+	<delete id="deleteContactUsById" parameterType="pd">
+		DELETE 
+		FROM sys_contactus
+		WHERE contactus_id in
+		<foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+</mapper>
